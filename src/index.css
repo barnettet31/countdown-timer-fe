@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add background image to body */
+
+body{
+    background-image: url("/images/pattern-hills.svg"), url("/images/bg-stars.svg"),linear-gradient(180deg, #1D1E28 0.06%, #261C2D 94.83%, #261A2D 100%);
+    
+    background-repeat: no-repeat;
+    background-size: 100% 30%, 100% 70%, 100%;
+    background-position: bottom, top;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size:14px;
+}
+
+/* Media query for screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+    body {
+        background-size: 242% 25%, auto 70%, 100%;
+    }
+  }
+ 
+  @keyframes flipDown {
+    0% {
+      transform: rotateX(0deg);
+    }
+    50% {
+      transform: rotateX(-80deg);
+    }
+    100% {
+      transform: rotateX(-90deg);
+    }
+  }
+  
+
+  .flip-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-down {
+    animation: flipDown 1s forwards;
+    transform-origin: top;
+    position: relative;
+  }
+  
+  .flip-down::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ddd; 
+    z-index: 2;
+    transform-origin: top;
+    transform: rotateX(0deg);
+  }
+  
